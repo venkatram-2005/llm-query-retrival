@@ -1,0 +1,63 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# VSCode & IDEs
+.vscode/
+.idea/
+
+# Logs and debug files
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Unit test coverage
+.coverage
+htmlcov/
+.tox/
+.nox/
+.cache/
+.pytest_cache/
+
+# Environment variables
+.env
+.env.*
+
+# FAISS index files
+*.faiss
+*.index
+
+# Jupyter notebooks (optional)
+.ipynb_checkpoints
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Streamlit cache
+.streamlit/
+__pypackages__/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# MyPy
+.mypy_cache/
+
+# Pylint
+pylint-report.txt
