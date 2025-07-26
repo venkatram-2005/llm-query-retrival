@@ -6,7 +6,7 @@ A powerful LLM-based system that allows users to upload documents (PDF, DOCX, Em
 Built with:
 
 - 📦 FastAPI backend
-- 🧠 Gemini 1.5 Flash for reasoning
+- 🧠 Gemini 2.0 Flash for reasoning
 - 🧬 Instructor-XL for embeddings
 - ⚡ FAISS for vector similarity search
 - 🖥️ Streamlit frontend for simple UI
