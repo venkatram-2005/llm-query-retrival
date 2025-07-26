@@ -1,6 +1,4 @@
-Sure! Here's your complete `README.md` in **proper Markdown format** ready for your project `llm-query-retrieval-gemini`:
 
----
 
 ```markdown
 # 🔍 LLM Query–Retrieval System using Gemini
