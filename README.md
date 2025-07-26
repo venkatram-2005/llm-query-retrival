@@ -1,6 +1,4 @@
 
-
-```markdown
 # 🔍 LLM Query–Retrieval System using Gemini
 
 A powerful LLM-based system that allows users to upload documents (PDF, DOCX, Emails via URL), ask natural language questions, and get semantically accurate answers with source context.
@@ -164,4 +162,4 @@ MIT © 2025 – Built for HackRx
 | 🧪 Tests     | `pytest tests/`                     |
 
 ---
-```
+
