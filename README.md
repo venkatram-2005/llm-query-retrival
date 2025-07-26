@@ -1,11 +1,13 @@
+Sure! Here's your complete `README.md` in **proper Markdown format** ready for your project `llm-query-retrieval-gemini`:
 
-
-## 📘 README.md – LLM Query–Retrieval Gemini
+---
 
 ```markdown
 # 🔍 LLM Query–Retrieval System using Gemini
 
-A powerful LLM-based system that allows users to upload documents (PDF, DOCX, Emails via URL), ask natural language questions, and get semantically accurate answers with source context. Built with:
+A powerful LLM-based system that allows users to upload documents (PDF, DOCX, Emails via URL), ask natural language questions, and get semantically accurate answers with source context.
+
+Built with:
 
 - 📦 FastAPI backend
 - 🧠 Gemini 1.5 Flash for reasoning
@@ -152,21 +154,16 @@ pytest tests/
 
 MIT © 2025 – Built for HackRx
 
-```
-
 ---
 
 ## ✅ Summary: How to Run
 
-| Task | Command |
-|------|---------|
-| 🔧 Setup | `pip install -r requirements.txt` |
-| 🧠 Backend | `uvicorn app.main:app --reload` |
+| Task         | Command                             |
+| ------------ | ----------------------------------- |
+| 🔧 Setup     | `pip install -r requirements.txt`   |
+| 🧠 Backend   | `uvicorn app.main:app --reload`     |
 | 🖥️ Frontend | `streamlit run ui/streamlit_app.py` |
-| 🧪 Tests | `pytest tests/` |
+| 🧪 Tests     | `pytest tests/`                     |
 
-Let me know if you’d like me to:
-- Add Docker support next
-- Add file upload capability to Streamlit
-- Push this to GitHub with setup scripts
+---
 ```
