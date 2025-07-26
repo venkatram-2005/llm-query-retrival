@@ -5,7 +5,7 @@ import google.generativeai as genai
 from typing import List
 
 # Load Gemini Flash model
-genai.configure(api_key=os.getenv("GEMINI_API_KEY") or "AIzaSyCVlrvV95bHTW1OmaRncDzka_iAbpdu0Xw")
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel("models/gemini-2.0-flash")
 
 def format_prompt(query: str, top_chunks: List[str]) -> str:
