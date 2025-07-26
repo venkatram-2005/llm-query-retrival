@@ -148,8 +148,7 @@ pytest tests/
 
 ## 📄 License
 
-MIT © 2025 – Built for HackRx
-
+MIT © 2025 
 ---
 
 ## ✅ Summary: How to Run
