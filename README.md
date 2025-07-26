@@ -1,5 +1,4 @@
 
----
 
 ## 📘 README.md – LLM Query–Retrieval Gemini
 
