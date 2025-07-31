@@ -8,7 +8,7 @@ load_dotenv()
 
 # Gemini API Config
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "models/gemini-2.0-flash")  # default to flash
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "models/gemini-2.5-flash")  # default to flash
 
 # Embedding Model
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "hkunlp/instructor-xl")
