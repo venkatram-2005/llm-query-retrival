@@ -1,38 +1,15 @@
 # app/services/json_formatter.py
 
 from typing import List
-from app.models import QueryResponse, DecisionRationale, ClauseMatch
 
-def format_answers(query: str, llm_output: str, matched_chunks: List[str], scores: List[float]) -> QueryResponse:
+def format_answers_only(llm_outputs: List[str]) -> List[str]:
     """
-    Formats the final output as a structured QueryResponse.
-    
+    Returns a list of plain string answers for the API response.
+
     Args:
-        query (str): User's natural language question.
-        llm_output (str): LLM's explanation/answer.
-        matched_chunks (List[str]): Chunks matched via semantic similarity.
-        scores (List[float]): Corresponding similarity scores.
-    
+        llm_outputs (List[str]): LLM-generated answers for each question.
+
     Returns:
-        QueryResponse: Structured response for API.
+        List[str]: List of answers
     """
-
-    # Zip matched clauses with scores
-    clause_matches = [
-        ClauseMatch(chunk=chunk, similarity_score=round(score, 4))
-        for chunk, score in zip(matched_chunks, scores)
-    ]
-
-    # Package rationale
-    rationale = DecisionRationale(
-        explanation=llm_output.strip(),
-        matched_clauses=clause_matches
-    )
-
-    # Final structured response
-    return QueryResponse(
-        query=query,
-        result=llm_output.strip(),
-        rationale=rationale,
-        source_chunks=matched_chunks
-    )
+    return [answer.strip() for answer in llm_outputs]

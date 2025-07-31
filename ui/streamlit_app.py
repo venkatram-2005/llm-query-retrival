@@ -38,23 +38,16 @@ with st.form("query_form"):
                 try:
                     response = requests.post(API_URL, headers=headers, data=json.dumps(payload))
                     response.raise_for_status()
-                    answers = response.json()
+                    result = response.json()
 
-                    st.success("✅ Answers Retrieved")
-                    for idx, ans in enumerate(answers):
-                        st.markdown(f"### Q{idx+1}: {ans['query']}")
-                        st.markdown(f"**Answer:** {ans['result']}")
-
-                        # Optional: Show matched clauses with scores
-                        with st.expander("🧠 Matched Clauses (Semantic Search)"):
-                            for match in ans["rationale"]["matched_clauses"]:
-                                st.markdown(f"- `{match['chunk']}` _(score: {match['similarity_score']})_")
-
-                        # Optional: Show full chunks
-                        with st.expander("📄 Source Chunks"):
-                            st.markdown("<pre>" + "\n\n---\n\n".join(ans["source_chunks"]) + "</pre>", unsafe_allow_html=True)
-
-                        st.markdown("---")
+                    if "answers" not in result:
+                        st.error("Response format invalid: missing 'answers' field.")
+                    else:
+                        st.success("✅ Answers Retrieved")
+                        for idx, answer in enumerate(result["answers"]):
+                            st.markdown(f"### Q{idx+1}: {questions[idx]}")
+                            st.markdown(f"**Answer:** {answer}")
+                            st.markdown("---")
 
                 except Exception as e:
                     st.error(f"🚫 Error: {str(e)}")
