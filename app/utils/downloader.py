@@ -42,3 +42,21 @@ def download_file(url: str) -> str:
 
     except requests.RequestException as e:
         raise RuntimeError(f"Download failed: {e}")
+
+import os
+import tempfile
+import requests
+from urllib.parse import urlparse, unquote
+
+def download_file_from_url(url: str) -> str:
+    response = requests.get(url)
+    response.raise_for_status()
+
+    parsed_url = urlparse(url)
+    path = unquote(parsed_url.path)
+    file_ext = os.path.splitext(path)[1] or ".tmp"
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=file_ext) as tmp_file:
+        tmp_file.write(response.content)
+        print(f"[download_file_from_url] Saved to temp path: {tmp_file.name}")
+        return tmp_file.name

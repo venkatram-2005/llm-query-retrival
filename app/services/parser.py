@@ -8,21 +8,27 @@ from docx import Document  # For DOCX files
 import email
 from email import policy
 
+from urllib.parse import urlparse, unquote
+
 def download_file(url: str) -> str:
     """
-    Downloads the file from the given URL and returns the local filepath.
+    Downloads the file from the given URL and returns a clean local filepath.
     """
     response = requests.get(url)
     if response.status_code != 200:
         raise Exception(f"Failed to download file: {url}")
 
-    # Create a temporary file with the correct extension based on the URL
-    file_ext = os.path.splitext(url)[1] or ".tmp"
-    with tempfile.NamedTemporaryFile(delete=False, suffix=file_ext) as tmp_file:
-        tmp_file.write(response.content)
-        tmp_filepath = tmp_file.name
+    # Parse the clean path (drop query params like ?sv=...)
+    parsed = urlparse(url)
+    path = unquote(parsed.path)  # e.g., '/assets/filename.pdf'
+    ext = os.path.splitext(path)[1] or ".pdf"  # Get extension only
 
-    return tmp_filepath
+    # Save to safe tempfile
+    with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp_file:
+        tmp_file.write(response.content)
+        return tmp_file.name
+
+
 
 def extract_text_from_pdf(filepath: str) -> str:
     """
@@ -60,27 +66,25 @@ def extract_text_from_email(filepath: str) -> str:
             text_parts.append(msg.get_content())
     return "\n".join(text_parts)
 
-def extract_text_from_url(url: str) -> str:
-    """
-    Downloads the file from the provided URL and extracts text content.
-    Supports PDF, DOCX, and email (.eml) files.
-    """
-    # Download file and get local path
-    local_path = download_file(url)
 
-    # Determine file type based on extension
+
+def extract_text_from_url(url_or_path: str) -> str:
+    if os.path.exists(url_or_path):
+        local_path = url_or_path
+    else:
+        local_path = download_file_from_url(url_or_path)
+
     ext = os.path.splitext(local_path)[1].lower()
 
     if ext == ".pdf":
-        text = extract_text_from_pdf(local_path)
+        return extract_text_from_pdf(local_path)
     elif ext in [".docx", ".doc"]:
-        text = extract_text_from_docx(local_path)
-    elif ext in [".eml"]:
-        text = extract_text_from_email(local_path)
+        return extract_text_from_docx(local_path)
+    elif ext == ".eml":
+        return extract_text_from_email(local_path)
     else:
         raise Exception(f"Unsupported file type: {ext}")
 
-    # Optional: Remove temporary file after processing
-    os.remove(local_path)
+    # optionally clean up downloaded file here if you want
 
-    return text
+
