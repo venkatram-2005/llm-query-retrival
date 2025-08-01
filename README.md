@@ -96,7 +96,7 @@ API_ENDPOINT=http://localhost:8000/hackrx/run
 ### 🧠 Step 4: Run FastAPI Backend
 
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8001
+uvicorn app.main:app --host 0.0.0.0 --port 8001
 ```
 
 ngrok http 8001
