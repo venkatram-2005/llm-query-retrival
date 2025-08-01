@@ -87,9 +87,6 @@ Create a `.env` file in the root directory with:
 # API Key from Google AI Console
 GEMINI_API_KEY=your_gemini_api_key
 
-# FastAPI token for internal validation
-API_KEY=aa74f88f94a2a3142a5a36975b9156f4e5d2909a58c87431e49da0894301b039
-
 # Optional: Set endpoint for frontend to call
 API_ENDPOINT=http://localhost:8000/hackrx/run
 ```
@@ -99,8 +96,10 @@ API_ENDPOINT=http://localhost:8000/hackrx/run
 ### 🧠 Step 4: Run FastAPI Backend
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn main:app --host 0.0.0.0 --port 8001
 ```
+
+ngrok http 8001
 
 It will start at: [http://localhost:8000](http://localhost:8000)
 
