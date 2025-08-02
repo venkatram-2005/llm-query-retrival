@@ -162,9 +162,6 @@ MIT © 2025
 ---
 ## Sample Images
 
-### Postman
-<img width="814" height="572" alt="image" src="https://github.com/user-attachments/assets/5526e92f-4177-4176-afa5-ef17e0b69f74" />
-
 ### UI
 <img width="491" height="578" alt="image" src="https://github.com/user-attachments/assets/323a382d-9018-4856-a175-85b792381ff4" />
 
